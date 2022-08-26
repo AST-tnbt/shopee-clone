@@ -1,8 +1,95 @@
+.app {
+    overflow: hidden;
+}
+
 .header {
     height: 120px;
     background-image: linear-gradient(180deg,#f53e2d,#ff6533);
 }
+/* menu tablet-mobile */
+.nav_overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    animation: fade-in ease 0.2s ;
+    display: none;
+}
 
+.mobile-tablet-bar {
+    display: none;
+    padding-right: 20px;
+}
+
+.mobile-tablet-bar-icon {
+    flex: 1;
+    color: var(--white-color);
+    font-size: 3rem;
+}
+
+.menu-btn:checked ~ .nav_overlay {
+    display: block;
+}
+
+.menu-btn:checked ~ .category-mobile-tablet {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.category-mobile-tablet {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 320px;
+    max-width: 100%;
+    background-color: var(--white-color);
+    border-left: #f53e2d solid 20px;
+    z-index: 101;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform linear 0.2s, opacity ease 0.2s;
+}
+
+.category-mobile-tablet__heading {
+    font-size: 2.4rem;
+    margin-left: 40px;
+    margin-top: 40px;
+    margin-bottom: 60px;
+    color: var(--text-color);
+}
+
+.category-mobile-tablet-list {
+    list-style: none;
+}
+.category-mobile-tablet-item {
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.category-mobile-tablet-item-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.8rem;
+    line-height: 2rem;
+    display: block;
+    margin-bottom: 30px;
+}
+
+.category-mobile-tablet-close {
+    position: absolute;
+    right: 16px;
+    top: 10px;
+}
+
+.category-mobile-tablet-close-icon {
+    font-size: 2.4rem;
+    color: #ccc;
+}
+/* navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -109,7 +196,7 @@
 .header_qr::before {
     content: "";
     position: absolute;
-    height: 30px;
+    height: 40px;
     width: 100px;
     top: -5px;
     left: -6px;
@@ -139,7 +226,7 @@
 
 .header__notify::before {
     content: "";
-    border-width: 20px 30px;
+    border-width: 20px 40px;
     border-style: solid;
     border-color: transparent transparent var(--white-color) transparent;
     position: absolute;
@@ -289,7 +376,7 @@
 }
 
 .btn.btn--with-icon {
-    height: 30px;
+    height: 40px;
 }
 
 .auth-form__social-group-icon {
@@ -382,7 +469,8 @@
     font-size: 2.4rem;
     text-align: center;
     margin-top: 5px;
-    margin-left: 30px;
+    margin-left: 40px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .header__search-input-wrap {
@@ -439,13 +527,11 @@
     content: "";
     position: absolute;
     border-style: solid;
-    border-width: 30px ;
+    border-width: 20px ;
     border-color: transparent transparent var(--white-color) transparent;
-    right: 0;
-    top: -40px;
+    right: 0px;
+    top: -30px;
 }
-
-
 
 .empty-cart-img {
     width: 100px;
@@ -464,7 +550,54 @@
     right: 0;
     text-align: center;
 }
+/* sort bar */
+.header-sort-bar {
+    position: fixed;
+    top: 74px;
+    left: 0;
+    right: 0;
+    height: 46px;
+    background-color: var(--white-color);
+    display: none;
+    margin-top: 0;
+    align-items: center;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    padding-left: 0;
+}
 
+.header-sort-bar-item {
+    font-size: 1.4rem;
+    list-style: none;
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.header-sort-bar-link {
+    color: var(--text-color);
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.header-sort-bar-item
+.header-sort-bar-item-active  {
+    color: #f53e2d;
+}
+
+.header-sort-bar-link::after {
+    content: "";
+    position: absolute;
+    height: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    border-right: 1px solid #e5e5e5;
+}
+
+.header-sort-bar-item:last-child .header-sort-bar-link::after {
+    display: none;
+}
 /* app container */
 
 .container {
@@ -478,6 +611,7 @@
 .category {
     background-color: var(--white-color);
     border-radius: 2px;
+    margin-right: 5px;
 }
 
 .category__heading{
@@ -781,6 +915,7 @@
 /* pagination */
 .home-product-pagination {
     margin: 48px 0 32px 0;
+    padding-left: 0;
 }
 
 .pagination-item--primary-btn
